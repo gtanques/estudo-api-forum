@@ -4,6 +4,7 @@ package br.com.alura.forum.controller;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
@@ -17,6 +18,7 @@ import java.net.URISyntaxException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@AutoConfigureMockMvc
 @ActiveProfiles("test")
 public class AutenticacaoControllerTest {
 
@@ -24,17 +26,17 @@ public class AutenticacaoControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void deveriaDevolver400CasoDadosDeAutenticacaoEstejamIncorretos() throws URISyntaxException {
+    public void deveriaDevolver400CasoDadosDeAutenticacaoEstejamIncorretos() throws Exception {
         URI uri = new URI("/auth");
         String json = "{\"email\":\"banana@gmail.com\", \"senha\":\"banana123\" }";
 
         mockMvc
                 .perform(MockMvcRequestBuilders
-                        .post(uri))
+                        .post(uri)
                         .content(json)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .andExpect(MockMvcResultMatchers
-                                .status()
-                                .is(400));
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(MockMvcResultMatchers
+                        .status()
+                        .is(400));
     }
 }
