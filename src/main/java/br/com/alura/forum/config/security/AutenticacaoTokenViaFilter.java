@@ -1,6 +1,6 @@
 package br.com.alura.forum.config.security;
 
-import br.com.alura.forum.config.security.service.TkService;
+import br.com.alura.forum.config.security.service.TokenService;
 import br.com.alura.forum.modelo.Usuario;
 import br.com.alura.forum.repository.UsuarioRepository;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,10 +16,10 @@ import java.io.IOException;
 
 public class AutenticacaoTokenViaFilter extends OncePerRequestFilter {
 
-    private final TkService tokenService;
+    private final TokenService tokenService;
     private final UsuarioRepository usuarioRepository;
 
-    public AutenticacaoTokenViaFilter(TkService tokenService, UsuarioRepository usuarioRepository) {
+    public AutenticacaoTokenViaFilter(TokenService tokenService, UsuarioRepository usuarioRepository) {
         this.tokenService = tokenService;
         this.usuarioRepository = usuarioRepository;
     }
