@@ -6,3 +6,8 @@
 - Boas práticas;
 - Spring Data e Bean Validation;
 - CRUD;
+- Spring Security;
+- Swagger;
+- JWT;
+- Docker;
+- Deploy;
